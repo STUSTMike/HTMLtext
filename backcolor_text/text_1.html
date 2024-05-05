@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>背景顏色控制器</title>
+  <style>
+   body {
+  text-align: center;
+  padding-top: 50px;
+  font-family: Arial, sans-serif;
+  color: white;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.slider {
+  width: 80%;
+  margin-bottom: 20px;
+}
+
+output {
+  display: block;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+  </style>
+</head>
+<body>
+    <div class="container">
+      <h1>背景顏色控制器</h1>
+      <div class="slider">
+        <label for="red">紅色：</label>
+        <input type="range" min="0" max="255" value="0" class="red" id="red">
+        <output id="redValue">0</output>
+      </div>
+      <div class="slider">
+        <label for="green">綠色：</label>
+        <input type="range" min="0" max="255" value="0" class="green" id="green">
+        <output id="greenValue">0</output>
+      </div>
+      <div class="slider">
+        <label for="blue">藍色：</label>
+        <input type="range" min="0" max="255" value="0" class="blue" id="blue">
+        <output id="blueValue">0</output>
+      </div>
+    </div>
+    <script>
+      function updateColor() {
+        var red = document.getElementById('red').value;
+        var green = document.getElementById('green').value;
+        var blue = document.getElementById('blue').value;
+        document.body.style.backgroundColor = 'rgb(' + red + ',' + green + ',' + blue + ')';
+        document.getElementById('redValue').textContent = red;
+        document.getElementById('greenValue').textContent = green;
+        document.getElementById('blueValue').textContent = blue;
+      }
+  
+      var sliders = document.querySelectorAll('.slider input');
+      sliders.forEach(function(slider) {
+        slider.addEventListener('input', updateColor);
+      });
+  
+      // 初始設置背景顏色
+      updateColor();
+    </script>
+  </body>
+  
+</html>
